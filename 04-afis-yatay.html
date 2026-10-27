@@ -354,7 +354,7 @@ h1 .ln:nth-child(2){color:var(--r)}
   justify-content:center;background:#000;color:#fff;padding:28px;
   transition:opacity .5s ease,visibility .5s ease;cursor:pointer}
 #giris.gitti{opacity:0;visibility:hidden;pointer-events:none}
-#giris .ic{max-width:min(1560px,94vw);width:100%;text-align:center;margin-top:36vh;
+#giris .ic{position:relative;z-index:3;max-width:min(1560px,94vw);width:100%;text-align:center;margin-top:36vh;
   animation:girisFade .85s cubic-bezier(.22,.7,.3,1) .05s both}
 @keyframes girisFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#giris .ic{animation:none}}
@@ -369,7 +369,7 @@ h1 .ln:nth-child(2){color:var(--r)}
   padding:22px 50px;border-radius:8px;
   transition:transform .18s ease,background .18s ease}
 #giris .btn:hover{background:#fff;transform:translateY(-2px)}
-@media (max-width:640px){#giris{padding:24px}#giris .ic{margin-top:33vh}
+@media (max-width:640px){#giris{padding:24px}#giris .ic{margin-top:44vh}
   #giris .soz{font-size:clamp(36px,9.6vw,48px)}
   #giris .btn{margin-top:36px;padding:18px 36px}}
 /* ---- giriş arka planı: eğik / katmanlı fotoğraf kolajı ---- */
@@ -392,30 +392,63 @@ h1 .ln:nth-child(2){color:var(--r)}
   mask-image:linear-gradient(180deg,#000 0,#000 80%,rgba(0,0,0,.5) 94%,transparent 100%)}
 #giris .kolaj .p1{left:3%;top:0;width:22.6%;height:30%;z-index:3;
   background-image:var(--g6);background-position:34% 8%;
-  filter:grayscale(.16) brightness(1.01) contrast(1.05)}
+  filter:grayscale(.5) saturate(.78) brightness(.9) contrast(1.18)}
 #giris .kolaj .p2{left:26.6%;top:1.8%;width:22.2%;height:30%;z-index:2;
   background-image:var(--g2);background-position:42% 6%;
-  filter:grayscale(.28) brightness(.92) contrast(1.06)}
+  filter:grayscale(.62) saturate(.66) brightness(.84) contrast(1.22)}
 #giris .kolaj .p3{left:51%;top:2%;width:22.2%;height:30%;z-index:3;
   background-image:var(--g3);background-position:50% 8%;
-  filter:grayscale(.24) brightness(.95) contrast(1.06)}
+  filter:grayscale(.56) saturate(.72) brightness(.86) contrast(1.2)}
 #giris .kolaj .p4{left:74.4%;top:3.4%;width:22.6%;height:30%;z-index:2;
   background-image:var(--g5);background-position:50% 18%;
-  filter:grayscale(.2) brightness(.96) contrast(1.05)}
+  filter:grayscale(.5) saturate(.78) brightness(.85) contrast(1.18)}
 #giris .kolaj .p5{display:none}
 /* yazi sahnesi: bant biter, alt kisim koyu */
 #giris .kolaj::after{content:"";position:absolute;inset:0;z-index:8;
+
   background:linear-gradient(180deg,rgba(3,3,5,.42) 0%,rgba(3,3,5,.04) 18%,rgba(3,3,5,.5) 33%,rgba(3,3,5,.92) 44%,rgba(3,3,5,.95) 100%)}
+  /* korku filmi atmosferi: katmanlar */
+#giris{overflow:hidden}
+#giris::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(115% 85% at 50% 10%,rgba(0,0,0,0) 34%,rgba(0,0,0,.42) 68%,rgba(0,0,0,.86) 100%);
+  animation:kVinyet 11s ease-in-out infinite}
+@keyframes kVinyet{0%,100%{opacity:.85}50%{opacity:1}}
+#giris .kolaj i[class^=p]{will-change:transform,opacity;
+  animation:kZoom 26s ease-in-out infinite alternate,kTitrek 13s steps(1,end) infinite}
+#giris .kolaj .p1{animation-duration:26s,12s;animation-delay:-3s,-7s}
+#giris .kolaj .p2{animation-duration:31s,17s;animation-delay:-5s,-2s}
+#giris .kolaj .p3{animation-duration:22s,15s;animation-delay:-11s,-9s}
+#giris .kolaj .p4{animation-duration:28s,19s;animation-delay:-16s,-4s}
+@keyframes kZoom{from{transform:scale(1.005) translate3d(0,0,0)}to{transform:scale(1.1) translate3d(-.8%,1.6%,0)}}
+@keyframes kTitrek{0%,84%,100%{opacity:1}85%{opacity:.82}86%{opacity:1}91%{opacity:.93}92%{opacity:1}}
+#giris .kolaj i.bg{animation:kBg 44s ease-in-out infinite alternate}
+@keyframes kBg{from{transform:scale(1.2) translate3d(-1.4%,0,0)}to{transform:scale(1.36) translate3d(1.4%,-1.2%,0)}}
+#giris .kolaj::before{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.55'/></svg>");
+  background-size:180px 180px;opacity:.15;mix-blend-mode:overlay;
+  animation:gren .8s steps(1,end) infinite}
+@keyframes gren{0%{background-position:0 0}17%{background-position:-32px 22px}33%{background-position:21px -38px}
+  50%{background-position:-46px -12px}67%{background-position:36px 34px}83%{background-position:-14px 46px}100%{background-position:12px -20px}}
+#giris::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(85% 55% at 50% 108%,rgba(126,6,6,.55),rgba(60,0,0,.18) 55%,transparent 75%);
+  opacity:.85;animation:kKizil 13s ease-in-out infinite}
+@keyframes kKizil{0%,100%{opacity:.6}42%{opacity:.95}46%{opacity:.7}50%{opacity:1}}
+#giris .soz{text-shadow:0 2px 40px rgba(0,0,0,.6),1.5px 0 rgba(190,0,0,.42),-1.5px 0 rgba(0,70,130,.35),0 0 90px rgba(140,0,0,.3);
+  animation:sozTitrek 17s steps(1,end) infinite}
+@keyframes sozTitrek{0%,88%,100%{opacity:1}89%{opacity:.72}90%{opacity:1}93%{opacity:.86}94%{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #giris .kolaj i[class^=p],#giris .kolaj i.bg,#giris .kolaj::before,#giris::before,#giris .soz{animation:none}
+  #giris .kolaj::before{opacity:.1}}
 @media (max-width:820px){
   #giris .kolaj .p5{display:none}
   #giris .kolaj i[class^=p]{--t:none;
     -webkit-mask-image:linear-gradient(180deg,#000 0,#000 62%,rgba(0,0,0,.45) 88%,transparent 100%);
     mask-image:linear-gradient(180deg,#000 0,#000 62%,rgba(0,0,0,.45) 88%,transparent 100%)}
   #giris .kolaj .p1{left:3%;top:4%;width:45.5%;height:26%;background-image:var(--g6);
-    background-position:36% 6%;filter:grayscale(.14) brightness(1.04) contrast(1.04)}
+    background-position:36% 6%;filter:grayscale(.46) saturate(.8) brightness(.92) contrast(1.16)}
   #giris .kolaj .p2{display:none}
   #giris .kolaj .p3{left:51.5%;top:4%;width:45.5%;height:26%;background-image:var(--g5);
-    background-position:50% 14%;filter:grayscale(.2) brightness(1.02) contrast(1.04)}
+    background-position:50% 14%;filter:grayscale(.5) saturate(.76) brightness(.9) contrast(1.16)}
   #giris .kolaj .p4{display:none}
 }
 @media (max-width:820px){
