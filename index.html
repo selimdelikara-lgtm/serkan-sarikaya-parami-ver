@@ -351,35 +351,28 @@ h1 .ln:nth-child(2){color:var(--r)}
   justify-content:center;background:#000;color:#fff;padding:28px;
   transition:opacity .5s ease,visibility .5s ease;cursor:pointer}
 #giris.gitti{opacity:0;visibility:hidden;pointer-events:none}
-#giris .ic{max-width:620px;width:100%;text-align:center}
-#giris .ust{font:800 11px/1 var(--mono);letter-spacing:.34em;color:#8a8a8a;
-  text-transform:uppercase;margin:0 0 26px}
-#giris h2{margin:0 0 20px;font-size:clamp(24px,4.4vw,44px);line-height:1.08;
-  letter-spacing:-.02em;font-weight:800;color:#fff}
-#giris h2 em{font-style:normal;color:var(--y)}
-#giris p{margin:0 auto;max-width:470px;font-size:clamp(14px,1.5vw,17px);
-  line-height:1.62;color:#d8d8d8}
-#giris .btn{margin:34px auto 0;display:inline-flex;align-items:center;gap:12px;
-  border:0;cursor:pointer;background:var(--y);color:#0a0a0a;
-  font:800 13px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
-  padding:19px 34px;border-radius:2px;transition:transform .18s ease,background .18s ease}
+#giris .ic{max-width:960px;width:100%;text-align:center}
+#giris .soz{margin:0 auto;max-width:900px;color:#fff;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:clamp(30px,4.2vw,54px);line-height:1.24;font-weight:500;
+  letter-spacing:-.01em;text-wrap:balance}
+#giris .btn{margin:58px auto 0;display:inline-block;border:0;cursor:pointer;
+  background:var(--y);color:#0a0a0a;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:clamp(26px,2.6vw,36px);line-height:1;font-weight:600;
+  padding:22px 50px;border-radius:8px;
+  transition:transform .18s ease,background .18s ease}
 #giris .btn:hover{background:#fff;transform:translateY(-2px)}
-#giris .btn i{font-style:normal;font-size:16px;line-height:1}
-#giris .alt{margin:18px 0 0;font:700 10.5px/1.6 var(--mono);letter-spacing:.18em;
-  color:#6b6b6b;text-transform:uppercase}
-@media (max-width:640px){#giris{padding:22px}#giris .btn{padding:17px 26px}}
+@media (max-width:640px){#giris{padding:24px}#giris .btn{margin-top:40px;padding:18px 36px}}
 
 </style>
 </head>
 <body>
 <div id="giris" role="dialog" aria-modal="true" aria-label="Giris ekrani">
   <div class="ic">
-    <p class="ust">Ödeme dosyası &middot; 2026</p>
-    <h2>SERKAN SARIKAYA ödemiyor.<br><em>Parayı istiyorum.</em></h2>
-    <p>Teslim edilen işlerin bedeli ödenmedi, verilen sözler tutulmadı.
-       Aşağıda 23 yazışma karesi tarih sırasıyla duruyor.</p>
-    <button class="btn" id="girisBtn" type="button">Tıkla <i>&#8594;</i></button>
-    <p class="alt">Yazışma dökümü &middot; kronolojik</p>
+    <p class="soz">Serkan Sarıkaya bana olan borcunu ödemiyor.
+       İşi teslim ettim, paramı vermedi.</p>
+    <button class="btn" id="girisBtn" type="button">tıkla</button>
   </div>
 </div>
 <div id="cevir" role="note" aria-label="Dikey ekran uyarisi">
